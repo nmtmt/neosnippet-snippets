@@ -1,0 +1,25 @@
+snippet		gitconfig
+alias		config
+options		head
+	[user]
+		name  = Matsumoto Noboru
+		email = ${1}
+	[color]
+		ui = true
+	[core]
+		autocrlf   = false
+		ignorecase = false
+		quotepath  = false
+	[push]
+		default = current
+	[branch]
+		autoSetupMerge = always
+	[credential]
+		helper = cache --timeout=${2:86400}
+	[merge]
+		ff = false
+	[pull]
+		ff = only
+	${0}
+
+# vim: set noexpandtab :

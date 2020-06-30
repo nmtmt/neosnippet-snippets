@@ -1,26 +1,21 @@
 snippet #!
-abbr    #!/bin/sh
+abbr    shebang
 alias   shebang
 options head
 	#!/bin/${1:sh}
-	${0}
-
 
 snippet if
 	if [ ${1:#:condition} ]; then
 		${0:TARGET}
 	fi
 
-
 snippet el
 	else
 		${0:TARGET}
 
-
 snippet elif
 	elif [ ${1:#:condition} ]; then
 		${0:TARGET}
-
 
 snippet for
 	for ${1:i} in ${2:#:words}; do
@@ -33,22 +28,19 @@ alias wh
 		${0:TARGET}
 	done
 
-
 snippet until
 	until ${1:#:condition} ; do
 		${0:TARGET}
 	done
 
-
 snippet heredoc
-alias   h <<
+alias   com
 	<< ${1:EOF}
 		${0:#:TARGET}
 	$1
 
 snippet env
 	#!/usr/bin/env ${1}
-
 
 snippet tmp
 	${1:TMPFILE}=$(mktemp ${2:XXX})
@@ -95,4 +87,11 @@ options     head
 	echo "${0:TARGET}" 1>&2
 	exit 1
 
+snippet		os
+options		head
+	if   [ "$(uname -s)" = "Darwin" ]; then os=mac
+	elif [ "$(expr substr $(uname -s) 1 5)" = "MINGW" ]; then os=windows
+	elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then os=linux
+	else os=unknown
+	fi
 # vim: set noexpandtab :

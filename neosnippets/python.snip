@@ -9,7 +9,6 @@ snippet     class
 abbr        class Class(...): ...
 options     head
 	class ${1:#:name}(${2:object}):
-
 		def __init__(self, ${3}):
 			${0:pass}
 
@@ -18,7 +17,6 @@ abbr        class Class(...): "..."
 options     head
 	class ${1:#:name}(${2:object}):
 		"""${3:#:class documentation}"""
-
 		def __init__(self, ${4}):
 			"""${5:#:__init__ documentation}"""
 			${0:pass}
@@ -143,15 +141,137 @@ options     word
 snippet     pdb
 abbr        import pdb..
 	import pdb; pdb.set_trace()
+	${0}
 
 snippet     ipdb
 abbr        import ipdb..
 	import ipdb; ipdb.set_trace()
+	${0}
 
 snippet     pudb
 abbr        import pudb..
 	import pudb; pudb.set_trace()
+	${0}
 
 snippet     ipy
-abbr        import ipython..
+abbr        import ipython
 	from IPython import embed; embed()
+	${0}
+
+snippet     pltimport
+	import matplotlib.pyplot as plt
+	${0}
+
+snippet     fig
+	fig = plt.figure(figsize=(8,6))
+	${0}
+
+snippet		cmap
+	cmap = plt.get_cmap("tab10") # tab20, Accent
+	${0}
+
+snippet     ax
+	ax = fig.add_subplot(111)
+	ax.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
+	ax.grid(color='lightgrey', linestyle='-', linewidth=1)
+	ax.legend()
+	ax.set_xlabel("${4}")
+	ax.set_ylabel("${5}")
+	ax.set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
+	ax.set_title("${8}")
+	${0}
+
+snippet     plot
+	fig = plt.figure(figsize=(8,6))
+	ax = fig.add_subplot(111)
+	ax.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
+	ax.grid(color='lightgrey', linestyle='-', linewidth=1)
+	ax.legend()
+	ax.set_xlabel("${4}")
+	ax.set_ylabel("${5}")
+	ax.set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
+	ax.set_title("${8}")
+	#fig.suptitle('', fontsize=16)
+	fig.savefig("${9}", dpi=100)
+	${0}
+
+snippet     plots
+	fig, axes = plt.subplots(nrows=1, ncols=2, sharex=True, sharey=True, figsize=(8,6))
+	axes[0].plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
+	axes[0].grid(color='lightgrey', linestyle='-', linewidth=1)
+	axes[0].legend()
+	axes[0].set_xlabel("${4}")
+	axes[0].set_ylabel("${5}")
+	axes[0].set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
+	axes[0].set_title("${8}")
+
+	fig.suptitle('${9}', fontsize=16)
+	fig.savefig("${10}", dpi=100)
+	${0}
+
+snippet		savebuf
+alias		buf
+	import io, cv2
+	buf = io.BytesIO()
+	fig.savefig(buf, format="png", dpi=120)
+	buf.seek(0)
+	img = cv2.imdecode(np.frombuffer(buf.getvalue(), dtype=np.uint8), 1)
+	img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+	cv2.imshow("name", img)
+	cv2.waitKey(1)
+	${0}
+
+snippet     gif
+	${1:pilimgs}[0].save("${2:sample.gif}", save_all=True, optimize=False, append_images=$1[1:], duration=100, loop=0)
+	${0}
+
+snippet		jsonsave
+	with open(${1:PATH}, "w") as f:
+		json.dump(${2:OBJ}, f, indent=2)
+	${0}
+
+snippet		jsonload
+	with open(${1:PATH}, "r") as f:
+		${2:DATA} = json.load(f)
+	${0}
+
+snippet		tqdm
+	from tqdm import tqdm
+	bar = tqdm(total=${1:epoch}, ncols=${2:80}, initial=${3:0})
+	#bar.clear() # clear line
+	#bar.refresh() # show line manually
+	bar.update(n=1)
+	bar.close()
+	${0}
+
+snippet		pklload
+alias		pickleload
+	import pickle
+	with open(${1:PATH}, "rb") as f:
+		${2:DATA} = pickle.load(f)
+	${0}
+
+snippet		pklsave
+alias		picklesave
+	import pickle
+	with open(${1:PATH}, "wb") as f:
+		pickle.dump(${2:DATA}, f, protocol=3)
+	${0}
+
+snippet		pklbz2load
+alias		picklebz2load
+	import pickle, bz2
+	with bz2.BZ2File(${1:PATH}, 'rb') as f:
+		pkl = f.read()
+		${2:DATA} = pickle.loads(pkl)
+	${0}
+
+snippet		pklbz2save
+alias		picklebz2save
+	import pickle, bz2
+	with bz2.BZ2File(${1:PATH}, 'wb', compresslevel=9) as f:
+		pkl = pickle.dumps(${2:DATA}, protocol=3)
+		f.write(pkl)
+	${0}
+
+# vim: set noexpandtab :
