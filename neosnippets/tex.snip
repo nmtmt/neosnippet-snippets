@@ -602,8 +602,15 @@ snippet meeting
 	\usepackage[left=15mm,right=15mm,top=15mm,bottom=15mm]{geometry}
 	\usepackage[dvipdfmx]{graphicx}
 	%\usepackage[dvipdfmx, draft]{graphicx}
+	\usepackage[dvipdfmx]{hyperref}
+	\usepackage{pxjahyper}
+	\hypersetup{
+	colorlinks=true,
+	}
 
-	\title{\huge Meeting Document}
+	\renewcommand{\figurename}{Fig. }
+
+	\title{\vspace{-1cm}Meeting Document}
 	\date{${1:May}, ${2:5th} 2020}
 	\author{Noboru Matsumoto}
 
@@ -621,6 +628,37 @@ snippet meeting
 		\vspace{5mm}
 		\item TODO
 		\normalsize
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\end{enumerate}
+
+	\end{document}
+
+snippet report
+	\documentclass[12pt, uplatex]{jsarticle}
+	\usepackage[left=15mm,right=15mm,top=15mm,bottom=15mm]{geometry}
+	\usepackage[dvipdfmx]{graphicx}
+	%\usepackage[dvipdfmx, draft]{graphicx}
+	\usepackage[dvipdfmx]{hyperref}
+	\usepackage{pxjahyper}
+	\hypersetup{
+	colorlinks=true,
+	}
+
+	\title{\vspace{-1cm}今週のまとめ}
+	\author{松本 昇}
+
+	\begin{document}
+	\maketitle
+
+	\begin{enumerate}
+		\item 目標
+		\begin{itemize}
+			\item ${0}
+		\end{itemize}
+		\vspace{5mm}
+		\item 結果
 		\begin{itemize}
 			\item
 		\end{itemize}
