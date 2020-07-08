@@ -183,6 +183,7 @@ snippet     ax
 
 snippet     plot
 	fig = plt.figure(figsize=(8,6))
+	fig.subplots_adjust(wspace=0.35)
 	ax = fig.add_subplot(111)
 	ax.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
 	ax.grid(color='lightgrey', linestyle='-', linewidth=1)
@@ -197,6 +198,7 @@ snippet     plot
 
 snippet     plots
 	fig, axes = plt.subplots(nrows=1, ncols=2, sharex=True, sharey=True, figsize=(8,6))
+	fig.subplots_adjust(wspace=0.35)
 	axes[0].plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
 	axes[0].grid(color='lightgrey', linestyle='-', linewidth=1)
 	axes[0].legend()
