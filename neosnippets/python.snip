@@ -181,7 +181,8 @@ snippet     ax
 	ax.set_title("${8}")
 	${0}
 
-snippet     plot
+snippet     figure
+alias		plot
 	fig = plt.figure(figsize=(8,6))
 	fig.subplots_adjust(wspace=0.35)
 	ax = fig.add_subplot(111)
@@ -196,7 +197,8 @@ snippet     plot
 	fig.savefig("${9}", dpi=100)
 	${0}
 
-snippet     plots
+snippet     subplots
+alias		plots
 	fig, axes = plt.subplots(nrows=1, ncols=2, sharex=True, sharey=True, figsize=(8,6))
 	fig.subplots_adjust(wspace=0.35)
 	axes[0].plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
