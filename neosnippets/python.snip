@@ -159,11 +159,8 @@ abbr        import ipython
 	${0}
 
 snippet     pltimport
+options		head
 	import matplotlib.pyplot as plt
-	${0}
-
-snippet     fig
-	fig = plt.figure(figsize=(8,6))
 	${0}
 
 snippet		cmap
@@ -225,7 +222,22 @@ alias		buf
 	cv2.waitKey(1)
 	${0}
 
+snippet		pilnew
+	pilimg = Image.new('RGB', ${1:(256,256)}, color=${2:(255,255,255)})
+	${0}
+
+snippet		pildraw
+	${1:from PIL impot ImageDraw}
+	draw = ImageDraw.Draw(pilimg)
+	${0}
+
+snippet		piltext
+	font = ImageFont.truetype(${2:"~/.font/Cica-Regular.ttf"}, ${3:fontsize})
+	draw.text(${4:(0,0)}, ${5:text}, font=font, fill=${6:(0,0,0,128)})
+	${0}
+
 snippet     gif
+alias		pilgif
 	${1:pilimgs}[0].save("${2:sample.gif}", save_all=True, optimize=False, append_images=$1[1:], duration=100, loop=0)
 	${0}
 
