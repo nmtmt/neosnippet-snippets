@@ -232,8 +232,8 @@ snippet		pildraw
 	${0}
 
 snippet		piltext
-	font = ImageFont.truetype(${2:"~/.font/Cica-Regular.ttf"}, ${3:fontsize})
-	draw.text(${4:(0,0)}, ${5:text}, font=font, fill=${6:(0,0,0,128)})
+	font = ImageFont.truetype("${2:~/.font/Cica-Regular.ttf}", ${3:fontsize})
+	draw.text(${4:(0,0)}, '${5:text}', font=font, fill=${6:(0,0,0,128)})
 	${0}
 
 snippet     gif
