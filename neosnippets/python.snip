@@ -167,48 +167,63 @@ snippet		cmap
 	cmap = plt.get_cmap("tab10") # tab20, Accent
 	${0}
 
-snippet     ax
-	ax = fig.add_subplot(111)
-	ax.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
-	ax.grid(color='lightgrey', linestyle='-', linewidth=1)
-	ax.legend()
-	ax.set_xlabel("${4}")
-	ax.set_ylabel("${5}")
-	ax.set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
-	ax.set_title("${8}")
+snippet     axplot
+	${1:ax}.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12, linewidth=None)
+	${0}
+
+snippet     axscatter
+	${1:ax}.scatter(${2:xs}, ${3:ys}, label="${4:label}", c=None, s=12, marker=".", alpha=None, linewidth=None)
+	${0}
+
+snippet		axsettings
+	${1:ax}.grid(color='lightgrey', linestyle='-', linewidth=1)
+	$1.legend()
+	$1.set_xlabel("${2}", labelpad=None)
+	$1.set_ylabel("${3}", labelpad=None)
+	$1.set(aspect=1, xlim=(${4:x_min,x_max}), ylim=(${5:y_min,y_max}))
+	$1.set_title("${6:title}")
+	${0}
+
+snippet		axgrid
+	${1:ax}.grid(color='lightgrey', linestyle='-', linewidth=1)
+	${0}
+
+snippet		axlabel
+	${1:ax}.set_xlabel("${2}", labelpad=None)
+	$1.set_ylabel("${3}", labelpad=None)
+	${0}
+
+snippet		axaspect
+alias		aspect
+	${1:ax}.set(aspect=1, xlim=None, ylim=None)
+
+snippet		axtitle
+	${1:ax}.set_title("${2}")
+	${0}
+
+snippet     addsubplot
+alias		subplot
+	${1:ax} = fig.add_subplot(${2:111})
 	${0}
 
 snippet     figure
-alias		plot
-	fig = plt.figure(figsize=(8,6))
-	fig.subplots_adjust(wspace=0.35)
-	ax = fig.add_subplot(111)
-	ax.plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
-	ax.grid(color='lightgrey', linestyle='-', linewidth=1)
-	ax.legend()
-	ax.set_xlabel("${4}")
-	ax.set_ylabel("${5}")
-	ax.set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
-	ax.set_title("${8}")
-	#fig.suptitle('', fontsize=16)
-	fig.savefig("${9}", dpi=100)
+	fig = plt.figure(figsize=(${1:8,6}))
+	fig.subplots_adjust(wspace=0.35, hspace=0.2)
 	${0}
+
+snippet		adjust_subplots
+	${1:fig}.subplots_adjust(wspace=0.35, hspace=0.2)
 
 snippet     subplots
 alias		plots
-	fig, axes = plt.subplots(nrows=1, ncols=2, sharex=True, sharey=True, figsize=(8,6))
-	fig.subplots_adjust(wspace=0.35)
-	axes[0].plot(${1:xs}, ${2:ys}, label="${3:label}", marker=".", markersize=12)
-	axes[0].grid(color='lightgrey', linestyle='-', linewidth=1)
-	axes[0].legend()
-	axes[0].set_xlabel("${4}")
-	axes[0].set_ylabel("${5}")
-	axes[0].set(aspect=1, xlim=(${6:x_min,x_max}), ylim=(${7:y_min,y_max}))
-	axes[0].set_title("${8}")
-
-	fig.suptitle('${9}', fontsize=16)
-	fig.savefig("${10}", dpi=100)
+	fig, axes = plt.subplots(nrows=1, ncols=2, sharex=False, sharey=False, figsize=(8,6))
+	fig.subplots_adjust(wspace=0.35, hspace=0.2)
+	fig.suptitle('${1}', fontsize=16)
 	${0}
+
+snippet		savefig
+alias		figsave
+	fig.savefig(${1:PATH}, dpi=100, transparent=True)
 
 snippet		savebuf
 alias		buf
@@ -236,8 +251,8 @@ snippet		piltext
 	draw.text(${4:(0,0)}, '${5:text}', font=font, fill=${6:(0,0,0,128)})
 	${0}
 
-snippet     gif
-alias		pilgif
+snippet     gifsave
+alias		pilgifsave
 	${1:pilimgs}[0].save("${2:sample.gif}", save_all=True, optimize=False, append_images=$1[1:], duration=100, loop=0)
 	${0}
 
