@@ -275,6 +275,10 @@ snippet		tqdm
 	bar.close()
 	${0}
 
+snippet		tqdmrange
+alias		rangetqdm,tqdmitr
+	tqdm(${1:iterable}, ncols=${3:80}):${0}
+
 snippet		pklload
 alias		pickleload
 	import pickle
