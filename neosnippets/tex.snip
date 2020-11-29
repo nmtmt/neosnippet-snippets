@@ -267,13 +267,30 @@ alias   \begin{flushright}
 	\end{flushright}
 
 snippet minipage
-alias   \begin{minipage} addminipage minifig
+alias   \begin{minipage} minifig
 	\begin{minipage}{${1:0.45}\hsize}
 		\centering
 		\includegraphics[width=${2:35mm}]{${3:filepath}}
 		\caption{${4}}
 		\label{${5}}
 	\end{minipage}
+
+snippet minipages
+alias   minifigs figures
+	\begin{figure}[htbp]
+		\begin{minipage}{${1:0.45}\hsize}
+			\centering
+			\includegraphics[width=${2:35mm}]{${3:filepath}}
+			\caption{${4}}
+			\label{${5}}
+		\end{minipage}
+		\begin{minipage}{$1}\hsize}
+			\centering
+			\includegraphics[width=$2]{${6:filepath}}
+			\caption{${7}}
+			\label{${8}}
+		\end{minipage}
+	\end{figure}
 
 snippet picture
 alias   \begin{picture}
