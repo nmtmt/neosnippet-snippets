@@ -107,11 +107,11 @@ alias   \begin{verse}
 
 snippet table
 alias   \begin{table}
-	\begin{table}[${1}]
+	\begin{table}[${1:h}]
 		\centering
 		\begin{tabular}{${2:ccc}} \hline % c:center, l:left, r:right, |:vline
-			header1 & header2 & header3 \\ \hline \hline
-			val1    & val2    & val3    \\ \hline
+			header1 & header2 & header3 \\\\ \hline \hline
+			val1    & val2    & val3    \\\\ \hline
 		\end{tabular}
 		\caption{${3}}
 		\label{${4}}
@@ -120,9 +120,8 @@ alias   \begin{table}
 snippet tabular
 alias   \begin{tabular}
 	\begin{tabular}{${1:ccc}} \hline % c:center, l:left, r:right, |:vline
-		header1 & header2 & header3 \\ \hline \hline
-		val1    & val2    & val3    \\ \hline
-		${2}
+		header1 & header2 & header3 \\\\ \hline \hline
+		val1    & val2    & val3    \\\\ \hline
 	\end{tabular}
 
 snippet thebibliography
