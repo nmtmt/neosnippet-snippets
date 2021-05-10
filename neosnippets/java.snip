@@ -1,15 +1,15 @@
 snippet class
-    class ${1} ${2:#:extends_or_implements}{
+    ${1:public }class ${2} ${3:#:extends_or_implements}{
         ${0:TARGET}
     }
 
 snippet interface
-    interface ${1} ${2:#:extends}{
+    ${1:public }interface ${1} ${2:#:extends}{
         ${0:TARGET}
     }
 
 snippet method
-    ${1:void} ${2:#:method}(${3}) ${4:throws} {
+    ${1:public }${1:void } ${2:#:method}(${3}) ${4:throws} {
         ${0:TARGET}
     }
 
@@ -183,7 +183,6 @@ snippet main
         }
     }
 
-
 snippet println
 options word
     System.out.println(${1});
@@ -191,6 +190,10 @@ options word
 snippet print
 options word
     System.out.print(${1});
+
+snippet printf
+options word
+    System.out.printf(${1});
 
 snippet format
 options word
