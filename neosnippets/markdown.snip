@@ -79,3 +79,35 @@ options head
     \`\`\`${1:#:language}
     ${2:#:code }
     \`\`\`
+
+snippet plantuml
+alias uml
+options head
+    \`\`\`plantuml
+    @startuml
+    ${0}
+    @enduml
+    \`\```
+
+snippet networkdialog
+alias nwdiag
+options head
+    \`\`\`plantuml
+    @startuml
+    nwdiag {
+	network ${1:networkname} {
+	    address = "${0}"
+	    web01 [address=""];
+	    db01;
+	}
+    }
+    @enduml
+    \`\`\`
+
+snippet mindmap
+options head
+    \`\`\`plantuml
+    @startmindmap
+    + ${0}
+    @endmindmap
+    \`\`\`
