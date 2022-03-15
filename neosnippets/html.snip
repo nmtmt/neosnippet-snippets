@@ -314,6 +314,10 @@ snippet pid
 options word
     <p id="${1}">${2:TARGET}</p>
 
+snippet div
+options word
+    <div>${1:TARGET}</div>
+
 snippet divid
 options word
     <div id="${1}">${2:TARGET}</div>
@@ -322,13 +326,33 @@ snippet divclass
 options word
     <div class="${1}">${2:TARGET}</div>
 
+snippet article
+options word
+    <article>${1}</article>
+
+snippet articleclass
+options word
+    <article class="${1}">${2:TARGET}</article>
+
+snippet articleid
+options word
+    <article id="${1}">${2:TARGET}</article>
+
+snippet section
+options word
+    <section>${1}</section>
+
+snippet sectionclass
+options word
+    <section class="${1}">${2:TARGET}</section>
+
+snippet articleid
+options word
+    <section id="${1}">${2:TARGET}</section>
+
 snippet img
 options word
     <img src="${1}" alt="${2}">
-
-snippet div
-options word
-    <div ${1:id="${2:someid\}"}>${3:TARGET}</div>
 
 snippet header
 options word
