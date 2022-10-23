@@ -310,11 +310,28 @@ alias		picklebz2save
 	${0}
 
 snippet		read_csv
-alias		pd_read_csv
+alias		pd_read_csv,df_read_csv
 	df = pd.read_csv(${0:PATH}, delimiter=None)
+
+snippet		to_csv
+alias		pd_to_csv,df_to_csv
+	df.to_csv(${0:PATH}, index=False)
+
+snippet		df_rename_column
+alias		pd_rename_column
+	df.rename(columns={'${1:OLD}': '${2:NEW}'}, inplace=True)
 
 snippet		pd_to_datetime
 alias		df_to_datetime
 	df['${1:COL_NAME}'] = pd.to_datetime(df['${2:COL_NAME}'], format="%Y/%m/%d %H:%M:%S").dt.date
+
+snippet		pd_sort_values
+alias		df_sort_values
+	df.sort_values(by=["${0:COL_NAME}"], ascending=True, inplace=True)
+
+snippet		pd_reset_index
+alias		df_reset_index
+	df.reset_index(inplace=True, drop=True)
+	${0}
 
 # vim: set noexpandtab :
