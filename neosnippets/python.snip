@@ -336,6 +336,6 @@ alias		df_reset_index
 
 snippet		df_drop_columns
 alias		pd_drop_columns
-	df.drop(columns=['${0:COLNAME}'])
+	df.drop(columns=['${0:COLNAME}'], drop=True)
 
 # vim: set noexpandtab :
