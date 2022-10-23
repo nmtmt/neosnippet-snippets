@@ -311,6 +311,6 @@ alias		picklebz2save
 
 snippet		read_csv
 alias		pd_read_csv
-	df = pd.read_csv(${0})
+	df = pd.read_csv(${0:PATH}, delimiter=None)
 
 # vim: set noexpandtab :
