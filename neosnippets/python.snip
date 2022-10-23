@@ -315,6 +315,6 @@ alias		pd_read_csv
 
 snippet		pd_to_datetime
 alias		df_to_datetime
-	df['${1:COL_NAME}'] = pd.to_datetime(df['${2:COL_NAME}'], format="Y/m/d H:M:S").dt.date
+	df['${1:COL_NAME}'] = pd.to_datetime(df['${2:COL_NAME}'], format="%Y/%m/%d %H:%M:%S").dt.date
 
 # vim: set noexpandtab :
