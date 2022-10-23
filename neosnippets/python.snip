@@ -334,4 +334,8 @@ alias		df_reset_index
 	df.reset_index(inplace=True, drop=True)
 	${0}
 
+snippet		df_drop_columns
+alias		pd_drop_columns
+	df.drop(columns=['${0:COLNAME}'])
+
 # vim: set noexpandtab :
