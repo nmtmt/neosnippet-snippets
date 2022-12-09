@@ -94,4 +94,13 @@ options		head
 	elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then os=linux
 	else os=unknown
 	fi
+
+
+snippet		log
+options		head
+	LOG_OUT=/tmp/stdout.log
+	LOG_ERR=/tmp/stderr.log
+	exec 1> >(tee -a $LOG_OUT)
+	exec 2>>$LOG_ERR
+
 # vim: set noexpandtab :
