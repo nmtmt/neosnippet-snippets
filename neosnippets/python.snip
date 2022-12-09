@@ -158,6 +158,23 @@ abbr        import ipython
 	from IPython import embed; embed()
 	${0}
 
+snippet		pandas
+options		head
+	import pandas as pd
+	pd.set_option('display.unicode.east_asian_width', True)
+	${0}
+
+snippet		argparse
+options		head
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument("${0}")
+
+snippet		parse_args
+options		head
+	args = vars(parser.parse_args())
+	${0}
+
 snippet     pltimport
 options		head
 	import matplotlib.pyplot as plt
