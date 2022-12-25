@@ -103,4 +103,9 @@ options		head
 	exec 1> >(tee -a $LOG_OUT)
 	exec 2>>$LOG_ERR
 
+snippet		filepath
+alias	abspath,realpath
+	path=$(realpath “${BASH_SOURCE:-\$0}”)
+	${0}
+
 # vim: set noexpandtab :
