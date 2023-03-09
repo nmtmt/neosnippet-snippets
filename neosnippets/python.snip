@@ -355,4 +355,15 @@ snippet		df_drop_columns
 alias		pd_drop_columns
 	df.drop(columns=['${0:COLNAME}'], drop=True)
 
+snippet		loggingimport
+alias		implogging
+options     head
+	import logging
+	logging.basicConfig(format='%(asctime)s %(message)s')
+	${0}
+
+snippet		log
+alias		loginfo
+	logging.info(${0})
+
 # vim: set noexpandtab :
