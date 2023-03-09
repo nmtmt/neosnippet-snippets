@@ -360,7 +360,7 @@ snippet		loggingimport
 alias		implogging
 options     head
 	import logging
-	logging.basicConfig(format='%(asctime)s %(message)s')
+	logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 	${0}
 
 snippet		log
