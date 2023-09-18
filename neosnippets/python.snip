@@ -367,4 +367,14 @@ snippet		log
 alias		loginfo
 	logging.info(${0})
 
+snippet		mysql_select
+alias		pymysql_select
+	import pymysql.cursors
+	with pymysql.connect(host=${1}, user=${2}, password=${3}, db=${4}, charset='utf8') as conn:
+		with conn.cursor() as c:
+			c.execute("select * from ${5} where ${6} <= %s", (${7},))
+			headers = [ x[0] for x in c.description ]
+			l = c.fetchall()
+			${0}
+
 # vim: set noexpandtab :
