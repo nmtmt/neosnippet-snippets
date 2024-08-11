@@ -359,13 +359,23 @@ alias		pd_drop_columns
 snippet		loggingimport
 alias		implogging
 options     head
-	import logging
-	logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+	from logging import getLogger, StreamHandler, Formatter
+	logger = getLogger(__name__)
+	handler.setLevel(DEBUG)
+	handler.setFormatter(Formatter('[%(asctime)s] %(message)s'))
+	logger.setLevel(DEBUG)
+	logger.addHandler(handler)
+	logger.propagate = False
 	${0}
 
-snippet		log
-alias		loginfo
-	logging.info(${0})
+snippet		loginfo
+	logger.info(${0})
+
+snippet		logwarning
+	logger.warning(${0})
+
+snippet		logdebug
+	logger.debug(${0})
 
 snippet		mysql_select
 alias		pymysql_select
