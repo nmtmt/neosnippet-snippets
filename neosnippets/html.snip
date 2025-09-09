@@ -133,9 +133,13 @@ options word
     <bdo dir="${1:rtl}">${2:TARGET}</bdo>
 
 snippet pre
-    <pre>
-    ${1:TARGET}
-    </pre>
+    <pre>${1:TARGET}</pre>
+
+snippet code
+    <code class="${1:lang}">${2:TARGET}<code>
+
+snippet pre_code
+    <pre><code class="${1:lang}">${2:TARGET}<code></pre>
 
 snippet blockquote
     <blockquote>
@@ -159,10 +163,12 @@ snippet bgcolor
     bgcolor="${1}"
 
 snippet ahref
+alias   a
 options word
     <a href="${1}">${2:TARGET}</a>
 
 snippet ahref_blank
+alias   a_blank
 options word
     <a href="${1}" target="_blank" rel="noopener">${2:TARGET}</a>
 
@@ -193,13 +199,37 @@ options word
     <iframe src="${1}"></iframe>
 
 snippet table
-    <table border="${1}">
+    <table border="${1:none}">
     ${2:TARGET}
     </table>
+
+snippet table_thead_tbody
+    <table border="${1:none}">
+        <thead><tr><th${2:TARGET}</th></tr></thead>
+        <tbody><tr><td></td></tr></tbody>
+    </table>
+
+snippet thead
+    <thead>
+    ${2:TARGET}
+    </thead>
+
+snippet tbody
+    <thead>
+    ${2:TARGET}
+    </tbody>
 
 snippet th
 options word
     <th>${1:TARGET}</th>
+
+snippet tr
+options word
+    <tr>${1:TARGET}</tr>
+
+snippet td
+options word
+    <td>${1:TARGET}</td>
 
 snippet ulsquare
 options word
@@ -391,3 +421,4 @@ options head
 snippet incodocroot
 options head
     <?php include_once("{$_SERVER['DOCUMENT_ROOT']}/${0}"); ?>
+
