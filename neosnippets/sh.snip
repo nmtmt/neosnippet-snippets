@@ -108,4 +108,10 @@ alias	abspath,realpath
 	path=$(realpath “${BASH_SOURCE:-\$0}”)
 	${0}
 
+snippet		dirpath
+alias	absdirpath,realdirpath,dpath
+	path=$(realpath “${BASH_SOURCE:-\$0}”)
+	dir=$(dirname $path)
+	${0}
+
 # vim: set noexpandtab :
