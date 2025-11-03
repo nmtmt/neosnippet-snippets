@@ -114,4 +114,28 @@ alias	absdirpath,realdirpath,dpath
 	dir=$(dirname $path)
 	${0}
 
+snippet		list
+alias	array,declare_array
+	declare -a ${1:list}=("${2}" "${0:TARGET}")
+
+snippet		dict
+alias	declare_dict
+	declare -A ${1:dict}=(
+	"[${2}"]="${3}"
+	"[${4}"]="${0:TARGET}"
+	)
+
+snippet		for_loop_list
+	for ${1:i} in "${!${2:list}[@]}"; do
+		# access: ${${2}[${1}]}
+		${0:TARGET}
+	done
+
+snippet		for_loop_dict
+	for ${1:key} in "${!${2:dict}[@]}"; do
+		# access: ${${2}[${1}]}
+		${0:TARGET}
+	done
+
+
 # vim: set noexpandtab :
