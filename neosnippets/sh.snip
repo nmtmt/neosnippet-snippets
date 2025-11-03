@@ -121,8 +121,7 @@ alias	array,declare_array
 snippet		dict
 alias	declare_dict
 	declare -A ${1:dict}=(
-	"[${2}"]="${3}"
-	"[${4}"]="${0:TARGET}"
+	["${2:key}"]="${0:TARGET}"
 	)
 
 snippet		for_loop_list
